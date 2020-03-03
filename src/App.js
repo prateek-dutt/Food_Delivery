@@ -4,16 +4,23 @@ import './App.css';
 import Navbar from './Components/navbar';
 import Filter from './Components/filter'
 import RestoAvail from './Components/resto'
+import axios from 'axios'
+res=[]
 
 function fetch_API(){
-  fetch("http://localhost:8080/resto_list")
-  .then((res)=>console.log(res))
+  axios.get('http://localhost:8000/resto_list')
+  .then(res =>{
+    const rest=res.data
+    res=rest
+  })
+  
+   
 }
 function App() {
   
+  setInterval(fetch_API,1)
   
-  
-  
+  console.log(resto)
 
   
 
