@@ -3,45 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/navbar';
 import Filter from './Components/filter'
+import RestoAvail from './Components/resto'
+
+function fetch_API(){
+  fetch("http://localhost:8080/resto_list")
+  .then((res)=>console.log(res))
+}
 function App() {
-  var names=["EatStreet","Ganesh","Maruti Dhoom Machale","Silver Spoone","99North","Dominos","Chacha Ka Dukan"];
+  
+  
+  
+  
+
+  
+
+
+
   return (
 
     <div className="App">
       <Navbar>
 
       </Navbar>
+      <RestoAvail>
+
+      </RestoAvail>
     
-      <div className="row">
-        <div className="col  m6">
-        <Filter></Filter>
-        </div>
-
-
-      <div className="col s6 m6">
-        {names.map(function(name,index){
-          return(
-            <a href="">
-             <div className="row">
-            <div className="card">
-           
-              <div className="card-content-title">{name}</div>
-         
-            <div className="card-content">
-              <p>
-                yummy food is an order away!
-              </p>
-            </div>
-            </div>
-            </div>
-            </a>
-          )
-        })}
-       
-        </div>
-        
-      </div>
-     
+    
     </div>
   );
 }
