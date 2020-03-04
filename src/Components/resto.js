@@ -1,18 +1,14 @@
 import React,{Component} from 'react';
 import Filter from './filter'
+import Order from './order'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-var restaraunts = {restaraunts:[{name:"Eat-Street",rating:"******",delivery_rating:"******",dine_cost:"200"},{name:"Ganesh",rating:"******",delivery_rating:"******",dine_cost:"200"
 
-  },{name:"Eat-Street",rating:"******",delivery_rating:"******",dine_cost:"200"},{name:"Eat-Street",rating:"******",delivery_rating:"******",dine_cost:"200"}]}
-  var resto=[]
-  var len = restaraunts.restaraunts.length
-  var i=0
-  while (i<len)
-  {
-    resto[i]=restaraunts.restaraunts[i]
-    i+=1
-  }
-  
 class Resto extends Component
 
 {
@@ -21,13 +17,26 @@ class Resto extends Component
         super(props)
         console.log(props.list)
         this.state={
-            list:[]
+            list:[],
+            status:true
         }
+
+
        
        
       }
     
- 
+      getInitialState(){
+        this.setState({
+          status: false
+        })
+      }
+      
+      get_ready_for_status(){
+        this.setState({
+          status: false
+        })
+      }
  
  
     
@@ -38,6 +47,8 @@ class Resto extends Component
     
     
     render(){
+
+      const style=this.state.status ? {display:'none'}:{};
                 return(
                     <div className="row" >
                     
@@ -46,31 +57,47 @@ class Resto extends Component
         </div>
 
 
-      <div className="col s6 m6">
+      <div className="col s6 m6" >
         {this.props.list.map(function(resto,index){
           
           return(
 
+            <div classNameLink="" >
+            <Router>
+            <Link to="/order">
+
             
-            <a href="#">
              <div className="row">
             <div className="card" >
            
               <div className="card-content-title">{resto.name}</div>
-              
+
+                
+
             <div className="card-content">
             <strong>
              <p>{resto.address}</p></strong>
-             <strong>Dining Cost</strong>
-              <p>{resto.dine_cost}</p>
-              <p>
-                yummy food is an order away!
-              </p>
+          
+                  <p>
+
+                    {resto.cuisine_type}
+                  </p>
+                
+                
+          
             </div>
             </div>
             </div>
-            </a>
-          )
+            </Link>
+            <Switch>
+              <Route path="/order">
+              <Order>
+
+              </Order>
+              </Route>
+            </Switch>
+            </Router>
+            </div> )
         })}
       
         </div>
@@ -78,7 +105,8 @@ class Resto extends Component
       </div>
      
             
-                )}
+                )
+              }
     
 
 }

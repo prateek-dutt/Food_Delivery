@@ -8,6 +8,8 @@ import axios from 'axios'
 
 
 
+
+
 class App extends Component
 {
         constructor(props)
@@ -38,6 +40,7 @@ class App extends Component
      return (
 
     <div className="App">
+   
       <Navbar>
 
       </Navbar>
@@ -46,7 +49,9 @@ class App extends Component
 
       </RestoAvail>
     
-    
+   
+
+      
     </div>
   );
   }
