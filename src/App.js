@@ -1,49 +1,61 @@
-import React from 'react';
+import React,{Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/navbar';
 import Filter from './Components/filter'
-function App() {
-  var names=["EatStreet","Ganesh","Maruti Dhoom Machale","Silver Spoone","99North","Dominos","Chacha Ka Dukan"];
-  return (
+import RestoAvail from './Components/resto'
+import axios from 'axios'
+
+
+
+
+
+class App extends Component
+{
+        constructor(props)
+        {
+          super()
+          this.state={
+            rest_list:[]
+          }
+        }
+        
+        fetchApi(){
+          axios.get("http://localhost:8000/resto_list")
+          .then(res=>{
+            const rest=res.data
+            this.setState({rest_list:rest})
+         
+            
+            
+           
+        });
+      }
+        componentDidMount(){
+          this.fetchApi()
+        }
+       
+              
+  render(){
+     return (
 
     <div className="App">
+   
       <Navbar>
 
       </Navbar>
+      
+      <RestoAvail list={this.state.rest_list}>
+
+      </RestoAvail>
     
-      <div className="row">
-        <div className="col  m6">
-        <Filter></Filter>
-        </div>
+   
 
-
-      <div className="col s6 m6">
-        {names.map(function(name,index){
-          return(
-            <a href="">
-             <div className="row">
-            <div className="card">
-           
-              <div className="card-content-title">{name}</div>
-         
-            <div className="card-content">
-              <p>
-                yummy food is an order away!
-              </p>
-            </div>
-            </div>
-            </div>
-            </a>
-          )
-        })}
-       
-        </div>
-        
-      </div>
-     
+      
     </div>
   );
+  }
+  
 }
 
 export default App;
