@@ -14,24 +14,28 @@ class App extends Component
         {
           super()
           this.state={
-            rest_list:[{}]
+            rest_list:[]
           }
         }
         
         fetchApi(){
           axios.get("http://localhost:8000/resto_list")
           .then(res=>{
-            this.setState({
-              rest_list:res.data
-            })
-          })
-        }
+            const rest=res.data
+            this.setState({rest_list:rest})
+         
+            
+            
+           
+        });
+      }
         componentDidMount(){
           this.fetchApi()
         }
        
               
-  render(){ return (
+  render(){
+     return (
 
     <div className="App">
       <Navbar>

@@ -16,13 +16,16 @@ var restaraunts = {restaraunts:[{name:"Eat-Street",rating:"******",delivery_rati
 class Resto extends Component
 
 {
+  
     constructor(props){
         super(props)
+        console.log(props.list)
         this.state={
-            list: props.list
+            list:[]
         }
        
-    }
+       
+      }
     
  
  
@@ -44,7 +47,7 @@ class Resto extends Component
 
 
       <div className="col s6 m6">
-        {this.state.list.map(function(resto,index){
+        {this.props.list.map(function(resto,index){
           
           return(
 
@@ -54,10 +57,10 @@ class Resto extends Component
             <div className="card" >
            
               <div className="card-content-title">{resto.name}</div>
-         
+              
             <div className="card-content">
-            <strong>Rating</strong>
-             <p>{resto.delivery_rating}</p>
+            <strong>
+             <p>{resto.address}</p></strong>
              <strong>Dining Cost</strong>
               <p>{resto.dine_cost}</p>
               <p>
