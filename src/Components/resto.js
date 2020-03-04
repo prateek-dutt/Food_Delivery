@@ -19,9 +19,9 @@ class Resto extends Component
     constructor(props){
         super(props)
         this.state={
-            list: resto
+            list: props.list
         }
-        
+       
     }
     
  
